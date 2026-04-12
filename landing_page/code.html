@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#304671",
+                        "on-secondary-container": "#9fb5e7",
+                        "on-primary": "#002e6a",
+                        "outline-variant": "#424754",
+                        "tertiary": "#ffb786",
+                        "surface-container-high": "#222a3d",
+                        "background": "#0b1326",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#0b1326",
+                        "primary-container": "#4d8eff",
+                        "on-secondary": "#182f59",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#283044",
+                        "on-error": "#690005",
+                        "on-surface": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "surface-bright": "#31394d",
+                        "surface-dim": "#0b1326",
+                        "secondary-container": "#304671",
+                        "primary-fixed": "#d8e2ff",
+                        "primary": "#adc6ff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "secondary": "#b1c6f9",
+                        "inverse-surface": "#dae2fd",
+                        "surface-variant": "#2d3449",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-container": "#171f33",
+                        "tertiary-container": "#df7412",
+                        "on-tertiary-container": "#461f00",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-primary-container": "#00285d",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-tint": "#adc6ff",
+                        "outline": "#8c909f",
+                        "on-tertiary-fixed": "#311400",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary-fixed": "#001a42",
+                        "on-background": "#dae2fd",
+                        "on-tertiary": "#502400",
+                        "inverse-primary": "#005ac2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(34, 42, 61, 0.4); backdrop-filter: blur(20px); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(77, 142, 255, 0.15) 0%, rgba(11, 19, 38, 0) 70%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl shadow-2xl shadow-slate-950/50">
+<div class="text-lg font-bold text-slate-100 tracking-tighter">Interview AI</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-blue-400 border-b border-blue-500 font-manrope text-sm transition-colors hover:text-blue-300" href="#">Practice</a>
+<a class="text-slate-400 font-manrope text-sm transition-colors hover:text-blue-300" href="#">History</a>
+<a class="text-slate-400 font-manrope text-sm transition-colors hover:text-blue-300" href="#">Resources</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-300 transition-colors">notifications</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-300 transition-colors">account_circle</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl text-sm font-bold transition-all hover:scale-105">Upgrade Plan</button>
+</div>
+</header>
+<main class="relative overflow-hidden">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 px-6 hero-gradient">
+<div class="max-w-6xl mx-auto text-center space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 text-label-sm uppercase tracking-widest text-primary font-bold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                    Next-Gen AI Practice
+                </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-tight">
+                    Land Your Dream Job with AI 💼
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto font-body">
+                    Practice real interviews with an AI interviewer, get instant feedback, and walk into every interview with full confidence.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+<button class="px-8 py-4 bg-primary-container text-on-primary-container text-lg font-bold rounded-xl transition-all hover:shadow-[0_0_20px_rgba(77,142,255,0.4)] hover:scale-105">
+                        Start Practicing Free
+                    </button>
+<button class="px-8 py-4 bg-transparent border-2 border-outline-variant text-on-surface text-lg font-bold rounded-xl hover:bg-surface-container-high transition-all">
+                        Watch Demo
+                    </button>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="mt-20 max-w-5xl mx-auto relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-tertiary rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+<div class="relative bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10">
+<img alt="Professional Interface" class="w-full h-auto object-cover opacity-90" data-alt="high-tech futuristic dashboard for ai interview with voice waveform visualization and real-time facial analysis indicators in dark aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc_Z7YDZcThptSyaWsJDyFGsEf99JR0XNCj5EqZLoOw-zQWcMeOHODspk9Hq8NBXYcx_aPKTkdT_qjkPRTG7dxgs5AiVSdN939WravO1-YJBKyAq2_SkMjhmP0MjpM3FhUgJ_-eYkfGhImNPv3Q_bpWV-oRttdH0dKNiEyC-dEj9Qe2qgVF3iktWDtvlbop1gDs_Dxv3jqz4Kq2mDhBMuubtGcg8rdljmb7y9WdHGSZpeSfUZk-3rUjGI3K7WC5fuEmXbs3l4llrQ"/>
+</div>
+</div>
+</section>
+<!-- Social Proof Bar -->
+<section class="py-12 bg-surface-container-low/50">
+<div class="max-w-6xl mx-auto px-6">
+<p class="text-center text-label-sm text-outline font-bold uppercase tracking-[0.2em] mb-10">Trusted by students and freshers from</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<span class="text-2xl font-black text-on-surface tracking-tighter">IIT</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">NIT</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">Infosys</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">TCS</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">Wipro</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">Accenture</span>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-6 max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-6 grid-rows-2 gap-4">
+<!-- Feature 1: Live AI Interview -->
+<div class="md:col-span-3 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary mb-6">videocam</span>
+<h3 class="text-2xl font-bold mb-3">Live AI Interview</h3>
+<p class="text-on-surface-variant text-body-md">Immersive mic and camera experience mimicking real video interview scenarios.</p>
+</div>
+</div>
+<!-- Feature 2: Company Mock Tests -->
+<div class="md:col-span-3 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+<div>
+<span class="material-symbols-outlined text-4xl text-primary mb-6">corporate_fare</span>
+<h3 class="text-2xl font-bold mb-3">Company Mock Tests</h3>
+<p class="text-on-surface-variant text-body-md">Curated question banks for tech giants like Google, Amazon, and service giants like TCS.</p>
+</div>
+</div>
+<!-- Feature 3: Resume Based Questions -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-3xl text-tertiary mb-6">description</span>
+<h3 class="text-xl font-bold mb-2">Resume Based</h3>
+<p class="text-on-surface-variant text-sm">AI scans your specific projects and skills to tailor questions.</p>
+</div>
+<!-- Feature 4: Daily Challenge -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-3xl text-primary mb-6">bolt</span>
+<h3 class="text-xl font-bold mb-2">Daily Challenge</h3>
+<p class="text-on-surface-variant text-sm">Sharpen your skills every morning with a fresh new challenge.</p>
+</div>
+<!-- Feature 5: Instant Feedback -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-3xl text-secondary mb-6">insights</span>
+<h3 class="text-xl font-bold mb-2">Instant Feedback</h3>
+<p class="text-on-surface-variant text-sm">Real-time scores for communication, eye-contact, and technical accuracy.</p>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-32 bg-surface-container-lowest">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-4xl font-extrabold text-center mb-20 tracking-tight">Three Steps to Mastery</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+<!-- Connector line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant to-transparent -translate-y-12"></div>
+<div class="relative z-10 text-center space-y-6">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-xl shadow-primary/20">1</div>
+<h4 class="text-xl font-bold">Upload Resume</h4>
+<p class="text-on-surface-variant">Simply upload your PDF resume or select your target job role manually.</p>
+</div>
+<div class="relative z-10 text-center space-y-6">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-xl shadow-primary/20">2</div>
+<h4 class="text-xl font-bold">Practice with AI</h4>
+<p class="text-on-surface-variant">Engage in a live conversation with voice and camera analysis enabled.</p>
+</div>
+<div class="relative z-10 text-center space-y-6">
+<div class="w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-xl shadow-primary/20">3</div>
+<h4 class="text-xl font-bold">Detailed Feedback</h4>
+<p class="text-on-surface-variant">Get a comprehensive breakdown of your performance with actionable tips.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Companies Section -->
+<section class="py-32 px-6">
+<div class="max-w-6xl mx-auto text-center">
+<h2 class="text-3xl font-bold mb-16">Practice for Your Dream Company</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-70">
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Google</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Amazon</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Microsoft</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Meta</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Apple</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Netflix</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">TCS</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Infosys</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Wipro</div>
+<div class="p-6 bg-surface-container-low rounded-xl font-bold">Flipkart</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 px-6 bg-surface-container-low/30">
+<div class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 bg-surface-container-high rounded-xl border-l-4 border-primary">
+<p class="text-lg italic mb-6">"Got placed at TCS after just 2 weeks of practice!"</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container"></div>
+<div>
+<p class="font-bold">Rahul</p>
+<p class="text-xs text-on-surface-variant">B.Tech CSE, Delhi</p>
+</div>
+</div>
+</div>
+<div class="p-8 bg-surface-container-high rounded-xl border-l-4 border-secondary">
+<p class="text-lg italic mb-6">"The AI feedback helped me fix my communication in days."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container"></div>
+<div>
+<p class="font-bold">Priya</p>
+<p class="text-xs text-on-surface-variant">MCA, Bangalore</p>
+</div>
+</div>
+</div>
+<div class="p-8 bg-surface-container-high rounded-xl border-l-4 border-tertiary">
+<p class="text-lg italic mb-6">"Company specific questions are exactly like real interviews."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container"></div>
+<div>
+<p class="font-bold">Amit</p>
+<p class="text-xs text-on-surface-variant">Fresher, Pune</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-6">
+<div class="max-w-4xl mx-auto bg-gradient-to-br from-primary-container to-blue-900 p-12 md:p-20 rounded-[2rem] text-center space-y-8 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">Your Dream Job is One Interview Away</h2>
+<p class="text-white/80 text-xl font-medium">Join thousands of students already preparing smarter with Artificial Intelligence.</p>
+<button class="px-10 py-5 bg-white text-blue-900 text-lg font-black rounded-xl transition-transform hover:scale-105 active:scale-95 shadow-xl">
+                    Start Free Today
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest pt-24 pb-12 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-1 md:col-span-1">
+<h3 class="text-xl font-black tracking-tighter text-on-surface mb-4">Interview AI</h3>
+<p class="text-on-surface-variant text-sm">Practice Smart, Get Hired. The ultimate AI-powered interview preparation platform for the modern workforce.</p>
+<div class="flex gap-4 mt-6">
+<a class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-high text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">podcasts</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Product</h4>
+<ul class="space-y-4 text-on-surface-variant text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Companies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Resources</h4>
+<ul class="space-y-4 text-on-surface-variant text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Interview Tips</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Case Studies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Success Stories</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Newsletter</h4>
+<p class="text-sm text-on-surface-variant mb-4">Get the latest interview questions weekly.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container p-3 rounded-lg border-none focus:ring-2 focus:ring-primary w-full text-sm" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-4 rounded-lg material-symbols-outlined">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10 flex flex-col md:row justify-between items-center gap-6">
+<p class="text-xs text-on-surface-variant/60">© 2024 Interview AI. All rights reserved.</p>
+<div class="flex gap-8 text-xs text-on-surface-variant/60">
+<a class="hover:text-on-surface" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface" href="#">Terms of Service</a>
+<a class="hover:text-on-surface" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interview AI - History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-secondary-fixed-variant": "#304671",
+                  "on-secondary-container": "#9fb5e7",
+                  "on-primary": "#002e6a",
+                  "outline-variant": "#424754",
+                  "tertiary": "#ffb786",
+                  "surface-container-high": "#222a3d",
+                  "background": "#0b1326",
+                  "error": "#ffb4ab",
+                  "surface-container-low": "#131b2e",
+                  "tertiary-fixed": "#ffdcc6",
+                  "surface": "#0b1326",
+                  "primary-container": "#4d8eff",
+                  "on-secondary": "#182f59",
+                  "error-container": "#93000a",
+                  "inverse-on-surface": "#283044",
+                  "on-error": "#690005",
+                  "on-surface": "#dae2fd",
+                  "surface-container-lowest": "#060e20",
+                  "surface-bright": "#31394d",
+                  "surface-dim": "#0b1326",
+                  "secondary-container": "#304671",
+                  "primary-fixed": "#d8e2ff",
+                  "primary": "#adc6ff",
+                  "tertiary-fixed-dim": "#ffb786",
+                  "secondary": "#b1c6f9",
+                  "inverse-surface": "#dae2fd",
+                  "surface-variant": "#2d3449",
+                  "on-tertiary-fixed-variant": "#723600",
+                  "secondary-fixed-dim": "#b1c6f9",
+                  "on-primary-fixed-variant": "#004395",
+                  "surface-container": "#171f33",
+                  "tertiary-container": "#df7412",
+                  "on-tertiary-container": "#461f00",
+                  "on-surface-variant": "#c2c6d6",
+                  "on-primary-container": "#00285d",
+                  "primary-fixed-dim": "#adc6ff",
+                  "surface-container-highest": "#2d3449",
+                  "on-error-container": "#ffdad6",
+                  "secondary-fixed": "#d8e2ff",
+                  "surface-tint": "#adc6ff",
+                  "outline": "#8c909f",
+                  "on-tertiary-fixed": "#311400",
+                  "on-secondary-fixed": "#001a42",
+                  "on-primary-fixed": "#001a42",
+                  "on-background": "#dae2fd",
+                  "on-tertiary": "#502400",
+                  "inverse-primary": "#005ac2"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "fontFamily": {
+                  "headline": ["Manrope"],
+                  "body": ["Manrope"],
+                  "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #222a3d; border-radius: 10px; }
+    .glass-panel {
+      backdrop-filter: blur(12px);
+      background: rgba(19, 27, 46, 0.7);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-slate-900 h-full w-64 border-r-0 z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-500 text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<h1 class="text-xl font-extrabold tracking-tighter text-blue-500">Interview AI</h1>
+</div>
+<p class="font-manrope text-sm font-medium tracking-tight text-slate-400 mt-1">Premium Tier</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+        Dashboard
+      </a>
+<!-- ACTIVE STATE: Interviews/History -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-400 font-semibold border-r-2 border-blue-500 bg-slate-800/80 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+        Interviews
+      </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+        Recordings
+      </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+        Performance
+      </a>
+</nav>
+<div class="px-3 mt-auto space-y-1">
+<button class="w-full mb-6 bg-primary-container text-on-primary-container py-3 rounded-xl font-bold flex items-center justify-center gap-2 scale-102 transition-transform duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+        Start Practice
+      </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+        Settings
+      </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-300 font-manrope text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+        Support
+      </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-8 h-16 sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl shadow-2xl shadow-slate-950/50">
+<div class="flex items-center gap-8">
+<span class="text-lg font-bold text-slate-100">History</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-manrope text-body-md text-slate-400 hover:text-blue-300 transition-colors" href="#">Practice</a>
+<a class="font-manrope text-body-md text-blue-400 border-b border-blue-500" href="#">History</a>
+<a class="font-manrope text-body-md text-slate-400 hover:text-blue-300 transition-colors" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" data-icon="search">search</span>
+<input class="bg-surface-container-lowest border-0 rounded-full pl-10 pr-4 py-1.5 text-sm focus:ring-1 focus:ring-primary/40 w-64 transition-all opacity-90 hover:opacity-100" placeholder="Search sessions..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-300" data-icon="notifications">notifications</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden ring-2 ring-blue-500/20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a young man with a slight smile and clean background for user profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXee3XVJA-z5Kn06YIfbMsKAS-7UOeGJ6OdHkcRyryCdgUaB0qmAbYyID-Hn2IqTIMBgwi3DL2gPksFhqOXm4tBy3vxkzKBq0N48e-SQfSczkS-TKIO7VunPS_I1okVRxjo3HNje5RwsHL5zFXHpoMUFSdZzrRkrYx3UIrYUlKeio5okbUWZvbZsQvCj2l3lbXdY1nR8aJU22m7KArvMWOF2yyMMTN0d3iwQviEBFCXzv8YJRo3MIFfrAz8L9B5ko3gvokRqCiatE"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Page Header & Stats Summary (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="md:col-span-2 bg-surface-container-low p-6 rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-display-lg text-3.5rem font-extrabold tracking-tight mb-2">Practice History</h2>
+<p class="text-on-surface-variant max-w-xs">Track your evolution across 24 completed simulation sessions.</p>
+</div>
+<div class="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl">
+<span class="label-sm text-primary uppercase tracking-widest block mb-4">Avg. Score</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold">84</span>
+<span class="text-on-surface-variant text-sm">/ 100</span>
+</div>
+<div class="mt-4 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl">
+<span class="label-sm text-tertiary uppercase tracking-widest block mb-4">Focus Needed</span>
+<div class="text-xl font-semibold">System Design</div>
+<p class="text-on-surface-variant text-xs mt-2">Based on your last 3 low-score segments.</p>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-low p-4 rounded-xl mb-6 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="work">work</span>
+<select class="bg-transparent border-0 text-sm focus:ring-0 p-0 pr-8 cursor-pointer">
+<option>All Roles</option>
+<option>Product Manager</option>
+<option>Software Engineer</option>
+<option>UX Designer</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="business">business</span>
+<select class="bg-transparent border-0 text-sm focus:ring-0 p-0 pr-8 cursor-pointer">
+<option>All Companies</option>
+<option>Google</option>
+<option>Meta</option>
+<option>Stripe</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="layers">layers</span>
+<select class="bg-transparent border-0 text-sm focus:ring-0 p-0 pr-8 cursor-pointer">
+<option>All Modes</option>
+<option>Audio Only</option>
+<option>Video Call</option>
+<option>Text Chat</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="calendar_month">calendar_month</span>
+<span class="text-sm">Last 30 Days</span>
+<span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</div>
+<div class="ml-auto flex items-center gap-3">
+<button class="text-sm font-semibold text-primary hover:underline">Reset Filters</button>
+<div class="w-[1px] h-6 bg-outline-variant/20 mx-2"></div>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-lg transition-colors" data-icon="download">download</button>
+</div>
+</div>
+<!-- Main History Table -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold">Date</th>
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold">Role</th>
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold">Company</th>
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold">Mode</th>
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold">Score</th>
+<th class="px-6 py-4 label-sm text-on-surface-variant uppercase tracking-widest font-bold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-highest/40 transition-colors">
+<td class="px-6 py-5">
+<div class="text-body-md font-medium">Oct 24, 2023</div>
+<div class="text-xs text-on-surface-variant">10:30 AM</div>
+</td>
+<td class="px-6 py-5">
+<div class="text-body-md font-semibold">Senior Product Manager</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-white flex items-center justify-center p-1">
+<img class="w-full" data-alt="simplified google logo colorful G on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxVTUEwAkBb4nGdiqrMiz2BW59mcCJz_yDOSyhP-XCNCbhndp0hSVDWANF6Wvb0Gcg7zU6kINWFoLzQQapqYpzVlPx3dnupS-8fu39PgdAqkvM2Cew9x2nxt-nDRSRThj1Ao0qIN0BlzYzfn_4PavYpmqLJOB2GctYRHoOVgzOBfEux_H5FBwGbazLDFBR_Ul2E5SEL_lwVHGGrHw2cQPKEjkzL6yIMBA1OVEKuIKQnzQiCmaGJ_EOumKW2YcBQ_AVE1nUFwBAOfc"/>
+</div>
+<span class="text-body-md">Google</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+                  Video Call
+                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-primary">92</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all">View Results</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-highest/40 transition-colors">
+<td class="px-6 py-5">
+<div class="text-body-md font-medium">Oct 22, 2023</div>
+<div class="text-xs text-on-surface-variant">02:15 PM</div>
+</td>
+<td class="px-6 py-5">
+<div class="text-body-md font-semibold">Frontend Architect</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-[#635BFF] flex items-center justify-center p-1">
+<img class="w-full" data-alt="stripe minimalist logo white on purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOHtX76tJBySkLwJBN7ZLHEoQJ8qP2o6nBNk3UZuLqJ087NDOu3pdOAidG1lM-CWj-hcvyYIFO7DCC3oGLRB6pXvGqxhP0ir8y84UbaQbYqMyv0ymUuGjF2mLj7XCU0eYKciLxRmBykiEPMOWx4OPYl6xd5CeuTDsuvF_fQTL-kyW9L_HWnYtUbL3dYHfZk6w7oVYVsWbuS1KHWPZT5VyJ5rrghPxWkRDVJWzl-dCuYPdrwHmHUgt1VBx7ouMr2gUVCxtbdEwtEhs"/>
+</div>
+<span class="text-body-md">Stripe</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface-variant text-on-surface-variant">
+                  Text Chat
+                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-on-surface">78</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="trending_flat">trending_flat</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all">View Results</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-highest/40 transition-colors">
+<td class="px-6 py-5">
+<div class="text-body-md font-medium">Oct 18, 2023</div>
+<div class="text-xs text-on-surface-variant">09:00 AM</div>
+</td>
+<td class="px-6 py-5">
+<div class="text-body-md font-semibold">Systems Engineer</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black flex items-center justify-center p-1 border border-outline-variant/30">
+<img class="w-full" data-alt="meta platform logo white on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg7LfIfohjkm3CQK8oXRFWUY5THsX81lVBZMP5-8GveU10LJ3-EHkySudqjctXfjnHt8w3q0kRn3bORucVR-HJZNMFPqrskp-1vpUqkw0uNcvqtLQqtHBpQ7dAcCz7sVHqoGRvsRahS5e9dWV3jYMomEFaCPOXR1FidBsm9IKxnT9dblstLmaCclrqiJLoRPxmNN-S36yS7TIGXX-iXvo4cG2f6-HeuY7oUCCw7esyeuawo2Xu5wXyQZG_0mV2LCkG8Ocpl8IyA7A"/>
+</div>
+<span class="text-body-md">Meta</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+                  Video Call
+                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-primary">85</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all">View Results</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-highest/40 transition-colors">
+<td class="px-6 py-5">
+<div class="text-body-md font-medium">Oct 15, 2023</div>
+<div class="text-xs text-on-surface-variant">04:45 PM</div>
+</td>
+<td class="px-6 py-5">
+<div class="text-body-md font-semibold">Product Designer</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-slate-100 flex items-center justify-center p-1">
+<img class="w-full" data-alt="airbnb logo coral on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwpd93Ha00NP3uQE-14ZCxf8AKVORH4WIKFPgNETP-VC9_9gMmEEHUp_v48zaOULKAsfxUqng0tImTI8AFZZeWHLV1DcEi_8O4NldCepqRehrJi82R1Q8V4Yyxf94BEIkI-S-OW3gbdMbh1QEupHDPox551SRz1Z5C-0dpOpkAT3XKwb256Uzk4k1dK16nnFm1inqiULKIFrSFKMA6-arlCIyeAtphAer6TkT8luxrnlPuVzAkIbQ6OAtnbjZVb4P9NOPOG7atiY"/>
+</div>
+<span class="text-body-md">Airbnb</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-tertiary-fixed text-on-tertiary-fixed">
+                  Audio Only
+                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-error">64</span>
+<span class="material-symbols-outlined text-error text-sm" data-icon="trending_down">trending_down</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all">View Results</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-surface-container-highest/40 transition-colors">
+<td class="px-6 py-5">
+<div class="text-body-md font-medium">Oct 12, 2023</div>
+<div class="text-xs text-on-surface-variant">11:00 AM</div>
+</td>
+<td class="px-6 py-5">
+<div class="text-body-md font-semibold">Software Engineer II</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-black flex items-center justify-center p-1">
+<img class="w-full" data-alt="amazon logo simple arrow on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3LwwFo7EpJ0bXKm5_zllCTuVeJXpwrAeGFNeUu5pAWPcp37VzwBnSMddQeAd-LwWmMz1gIpn6kU1Cr9uPprvFkufCr6KLAsRMvE1B-09XXBjzXs2h_9iIANi8Doi_ZV8wAT0m2HHbWZH5Ug9wMdQjp0NvLKRY2N5FjwUnPCenW3c5VVAJOvqA_6kglRvB9lsMFXWp6Bra6kIwSXavEMgRy88rJDwFXGknhjHLPsrrRie6Wyyi8T3N_osRl6N4kYc4OUPJdeQqSEg"/>
+</div>
+<span class="text-body-md">Amazon</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+                  Video Call
+                </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold text-primary">89</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all">View Results</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="bg-surface-container-low px-6 py-4 flex items-center justify-between border-t border-outline-variant/10">
+<p class="text-xs text-on-surface-variant">Showing <span class="font-bold text-on-surface">1-10</span> of <span class="font-bold text-on-surface">24</span> sessions</p>
+<div class="flex items-center gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg disabled:opacity-20" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-xs font-bold">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-xs font-bold">3</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- AI Insight Tooltip Floating (Contextual) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-high p-6 rounded-xl flex gap-4 items-start relative">
+<div class="bg-tertiary/20 p-3 rounded-full shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h4 class="text-title-md font-semibold mb-1">Weekly AI Recommendation</h4>
+<p class="text-body-md text-on-surface-variant">Your technical scoring is consistently high (88+), but your behavioral answers for 'Leadership' traits have dipped. Consider a dedicated session for the <strong>Amazon Leadership Principles</strong>.</p>
+</div>
+<div class="absolute top-4 right-4 h-2 w-2 rounded-full bg-tertiary animate-pulse"></div>
+</div>
+<div class="bg-primary/5 p-6 rounded-xl border border-primary/10 flex gap-4 items-center">
+<img class="w-20 h-20 rounded-lg object-cover grayscale opacity-60" data-alt="modern tech office meeting room with glass walls and professional atmosphere for interview simulation background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY3Jysd11dLC3U-k-pAg1MaZMWoZjC4mOrhoujxwppn4Wqrw-PS457XhKleJb5JMpQ4lmSzv3Pyvjt8JIXZecNT4YhK1hoC9DP8wLhC9Od94TatJpBvZnfcfsWjUA4R_sz_9nfUzYBp0SqSFT4z9cESRq8Kv8Nl3pMItBjb5sAGujZesUcwr2793piGEzUfVRnquG4TEm9KBScBtFUgkL8GKEdBCsS4Ab9CQop4SB4tjolXlcwUu7p1HVskHXLnY8KI2VVIIeUWdI"/>
+<div>
+<h4 class="text-title-md font-semibold mb-1">Ready for the real thing?</h4>
+<p class="text-body-md text-on-surface-variant mb-2">Simulate a full 45-minute technical round with a Mock Interviewer.</p>
+<button class="text-sm font-bold text-primary flex items-center gap-1 group">
+              Upgrade to Premium Pro
+              <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

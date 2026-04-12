@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-onSurface font-sans antialiased selection:bg-primary/30;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface-1/40 backdrop-blur-xl border border-white/5;
+  }
+  .glass-card {
+    @apply bg-surface-2/60 backdrop-blur-md rounded-xl border border-white/5 shadow-xl;
+  }
+  .hero-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(77, 142, 255, 0.15) 0%, rgba(11, 19, 38, 0) 70%);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400;
+  }
+}

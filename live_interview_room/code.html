@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Echo AI - Live Interview Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#31394d",
+                        "on-surface": "#dae2fd",
+                        "background": "#0b1326",
+                        "surface-container-high": "#222a3d",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#001a42",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#b1c6f9",
+                        "outline": "#8c909f",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-fixed": "#311400",
+                        "tertiary": "#ffb786",
+                        "primary-container": "#4d8eff",
+                        "surface-dim": "#0b1326",
+                        "tertiary-container": "#df7412",
+                        "primary": "#adc6ff",
+                        "on-tertiary": "#502400",
+                        "on-primary-container": "#00285d",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#131b2e",
+                        "outline-variant": "#424754",
+                        "on-tertiary-container": "#461f00",
+                        "on-secondary": "#182f59",
+                        "surface-tint": "#adc6ff",
+                        "surface-container": "#171f33",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed-variant": "#004395",
+                        "inverse-primary": "#005ac2",
+                        "primary-fixed": "#d8e2ff",
+                        "on-background": "#dae2fd",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed-variant": "#304671",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#9fb5e7",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-container": "#304671",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary": "#b1c6f9",
+                        "surface-variant": "#2d3449",
+                        "on-primary": "#002e6a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mic-bar {
+            width: 3px;
+            background: #adc6ff;
+            border-radius: 2px;
+            animation: pulse-height 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-height {
+            0% { height: 4px; }
+            100% { height: 24px; }
+        }
+        .pulse-dot {
+            animation: pulse-opacity 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-opacity {
+            0% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(1); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #060e20;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #222a3d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Anchor -->
+<header class="bg-slate-950/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-2xl shadow-blue-900/10 flex justify-between items-center px-8 h-16 w-full max-w-none">
+<div class="flex items-center gap-6">
+<span class="text-2xl font-extrabold tracking-tighter text-blue-400">Echo AI</span>
+<div class="h-6 w-px bg-slate-800/50"></div>
+<div class="flex flex-col">
+<span class="font-headline text-sm font-bold text-on-surface">Senior Product Designer Mock Interview</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-red-500 pulse-dot"></span>
+<span class="text-xs font-label text-on-surface-variant tracking-wider uppercase">00:24:12</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 bg-error text-on-error font-headline font-bold text-sm rounded-xl hover:bg-error/90 transition-all active:scale-95">
+                End Interview
+            </button>
+</div>
+</header>
+<main class="flex-1 mt-16 pb-24 grid grid-cols-1 md:grid-cols-10 gap-0 h-[calc(100vh-160px)]">
+<!-- LEFT CONTENT (60%) -->
+<section class="md:col-span-6 p-8 flex flex-col gap-6">
+<!-- Camera Feed Box -->
+<div class="relative flex-1 bg-surface-container-lowest rounded-xl overflow-hidden shadow-2xl group border border-outline-variant/10">
+<img alt="User Feed" class="w-full h-full object-cover opacity-80 grayscale-[30%]" data-alt="Professional woman in a minimalist home office setup, soft cinematic lighting, high-end webcam perspective, focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyJxS5rpH8DXNybJOaURoUlzuFXAvwOjf00ezQcnKAJG-M76Q7jurIg__7cJvj2GqjPyU7s-hztx7Sl4qMFYye9SPTyzQgxJc9KEqMoAgC2ZWpuTrq8YapD8MbmUwy-9IL9ZaYZHi_FtvH8SQxN-WUnKoK47Nl-261mJUJR5Vf_fmULd9YgA2qElKNhwI_Spb-_S8XthuYOAVZAFGVls5uag7WiE-je8-RzBUjjzag9RiUpRq5JHJYQ4JcTr0gC6Low5Np2ySZkoE"/>
+<div class="absolute bottom-6 left-6 flex items-center gap-3 px-4 py-2 bg-slate-950/60 backdrop-blur-md rounded-full border border-outline-variant/20">
+<div class="flex items-end gap-1 h-6 px-1">
+<div class="mic-bar" style="animation-delay: 0.1s"></div>
+<div class="mic-bar" style="animation-delay: 0.3s"></div>
+<div class="mic-bar" style="animation-delay: 0.2s"></div>
+<div class="mic-bar" style="animation-delay: 0.5s"></div>
+</div>
+<span class="text-primary text-xs font-bold font-label uppercase tracking-widest">🎤 Speaking...</span>
+</div>
+<div class="absolute top-6 right-6 px-3 py-1 bg-primary/10 backdrop-blur-md border border-primary/20 rounded-lg">
+<span class="text-primary text-[10px] font-black uppercase tracking-tighter">HD CONNECTION</span>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex justify-center items-center gap-6">
+<button class="w-14 h-14 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-lg">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="w-14 h-14 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-lg">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<button class="w-14 h-14 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-lg">
+<span class="material-symbols-outlined">screen_share</span>
+</button>
+<div class="w-px h-10 bg-outline-variant/20"></div>
+<button class="w-14 h-14 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-bright transition-all duration-300 shadow-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</section>
+<!-- RIGHT CONTENT (40%) -->
+<section class="md:col-span-4 bg-surface-container-low border-l border-outline-variant/10 flex flex-col h-full">
+<!-- AI Interviewer Card -->
+<div class="p-6 bg-surface-container-high/30 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-primary/20">
+<img alt="AI Interviewer" class="w-full h-full object-cover" data-alt="Futuristic AI avatar stylized as a sleek metallic humanoid head with glowing blue core highlights, clean dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQay2EiGZKbyPB5ci9GjN90pT9l_Lc121XnheLveIc_6ayAihszQaPSb2WQgnmVrZYI3YH7a3MtZpqy2tyChmPQjthuQ-FxpJYMiBC6PkHThnNePSWLfcGUnFzxW1_M6JiVXU3eFZagsZ3BPEaLJIN7kzRsvLP1rMfbrF1IrfeW0HEt9vpW_TkHye5FTQKm4LgBKaonL77p_3Yy9u7HWYv0ozn5PblqhHluAUaPe8uyP3yCUOUnanREu7ESo2bZNLdZC8Mqf2fut8"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-background rounded-full flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-tertiary rounded-full pulse-dot"></div>
+</div>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface">Echo AI Interviewer</h3>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Active Analysis Mode</p>
+</div>
+</div>
+</div>
+<!-- Scrollable Transcript -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 custom-scrollbar">
+<!-- AI Message -->
+<div class="flex flex-col gap-2 max-w-[85%]">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase ml-1">ECHO AI</span>
+<div class="bg-surface-container-highest p-4 rounded-xl rounded-tl-none text-sm leading-relaxed text-on-surface">
+                        That's a great point about user-centricity. Could you elaborate on how you handled the conflict between technical constraints and design vision in the last project you mentioned?
+                    </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-end items-end">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-widest uppercase mr-1">YOU</span>
+<div class="bg-primary/10 border border-primary/20 p-4 rounded-xl rounded-tr-none text-sm leading-relaxed text-primary">
+                        In that specific case, we held a workshop with the engineering team to map out MVP features. We used a RICE framework to prioritize.
+                    </div>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col gap-2 max-w-[85%]">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase ml-1">ECHO AI</span>
+<div class="bg-surface-container-highest p-4 rounded-xl rounded-tl-none text-sm leading-relaxed text-on-surface">
+                        Understood. And regarding the RICE framework, how did you specifically calculate the 'Impact' metric for the accessibility features?
+                    </div>
+</div>
+<!-- Thinking Pulse -->
+<div class="flex items-center gap-2 mt-2">
+<div class="w-1.5 h-1.5 bg-tertiary rounded-full pulse-dot"></div>
+<span class="text-[10px] italic text-on-surface-variant">AI is processing your response...</span>
+</div>
+</div>
+<!-- Text Input Fallback -->
+<div class="p-6 border-t border-outline-variant/10">
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/40 rounded-xl px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 transition-all" placeholder="Type a response if mic fails..." type="text"/>
+<button class="absolute right-3 top-2.5 text-primary">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM BAR: Live Transcription -->
+<footer class="fixed bottom-0 w-full h-20 bg-slate-950 border-t border-slate-800/50 flex items-center px-8 gap-6 z-50">
+<div class="flex-shrink-0 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">keyboard_voice</span>
+</div>
+<span class="text-[10px] font-black text-on-surface-variant uppercase tracking-tighter w-16">LIVE FEED</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-on-surface text-lg font-medium italic opacity-90 truncate leading-relaxed">
+                "...we used a RICE framework to prioritize the backlog, ensuring that the most critical accessibility updates were prioritized first while maintaining our development velocity during the Q3 sprint cycle..."
+            </p>
+</div>
+<div class="flex-shrink-0 flex items-center gap-2">
+<div class="px-3 py-1 bg-tertiary-container/20 border border-tertiary-container/30 rounded-full">
+<span class="text-[10px] text-tertiary font-bold uppercase tracking-widest">Accuracy 98%</span>
+</div>
+</div>
+</footer>
+</body></html>
