@@ -24,7 +24,7 @@ import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Ai-Interviwer/">
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{
           className: 'bg-surface-2 text-onSurface border border-white/10',
