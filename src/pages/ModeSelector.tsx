@@ -10,6 +10,7 @@ export default function ModeSelector() {
   const [interviewerVoice, setInterviewerVoice] = useState<'female' | 'male'>('female');
   const [voiceStyle, setVoiceStyle] = useState<'fluent' | 'clear'>('clear');
   const [seniority, setSeniority] = useState<'Fresher' | 'Mid-level' | 'Senior'>('Mid-level');
+  const [role, setRole] = useState('Software Engineer');
   const [qCount, setQCount] = useState(5);
   const [resumeName, setResumeName] = useState<string>('');
   const [resumeStatus, setResumeStatus] = useState<string>('No resume uploaded');
@@ -136,12 +137,19 @@ export default function ModeSelector() {
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-[#8c909f] uppercase tracking-wider">Target Role</label>
                   <div className="relative">
-                    <select className="w-full bg-surface-1 border-none ring-1 ring-white/10 hover:ring-white/20 text-onSurface py-3 px-4 rounded-xl appearance-none focus:ring-primary/50 transition-all cursor-pointer text-sm outline-none">
+                    <select 
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      className="w-full bg-surface-1 border-none ring-1 ring-white/10 hover:ring-white/20 text-onSurface py-3 px-4 rounded-xl appearance-none focus:ring-primary/50 transition-all cursor-pointer text-sm outline-none"
+                    >
                       <option>Software Engineer</option>
+                      <option>Frontend Developer</option>
+                      <option>Backend Developer</option>
+                      <option>Full-Stack Developer</option>
+                      <option>Data Scientist</option>
+                      <option>DevOps Engineer</option>
                       <option>Product Manager</option>
                       <option>UX Designer</option>
-                      <option>Data Scientist</option>
-                      <option>DevOps Architect</option>
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#8c909f] w-5 h-5"/>
                   </div>
@@ -219,7 +227,7 @@ export default function ModeSelector() {
             </div>
           </div>
           
-          <Link to={selectedMode === 'live' ? `/room/new?track=${track}&interviewer=${interviewerVoice}&voiceStyle=${voiceStyle}` : `/practice?track=${track}&interviewer=${interviewerVoice}&voiceStyle=${voiceStyle}`} className="w-full sm:w-auto bg-primary text-white px-12 py-4 rounded-xl font-extrabold flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/20">
+          <Link to={selectedMode === 'live' ? `/room/new?track=${track}&interviewer=${interviewerVoice}&voiceStyle=${voiceStyle}&role=${encodeURIComponent(role)}&seniority=${seniority}&qCount=${qCount}` : `/practice?track=${track}&interviewer=${interviewerVoice}&voiceStyle=${voiceStyle}&role=${encodeURIComponent(role)}&seniority=${seniority}`} className="w-full sm:w-auto bg-primary text-white px-12 py-4 rounded-xl font-extrabold flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/20">
             Launch Interview <Rocket className="w-5 h-5"/>
           </Link>
         </footer>

@@ -16,26 +16,24 @@ export default function LiveInterviewRoom() {
   const selectedTrack = (searchParams.get('track') || 'technical') as 'technical' | 'aptitude' | 'group-discussion';
   const interviewer = (searchParams.get('interviewer') || 'female') as 'female' | 'male';
   const voiceStyle = (searchParams.get('voiceStyle') || 'clear') as 'clear' | 'fluent';
+  const role = searchParams.get('role') || 'Software Engineer';
+  const seniority = searchParams.get('seniority') || 'Mid-level';
+  const qCount = parseInt(searchParams.get('qCount') || '8', 10);
   const company = id ? id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : 'General';
+  
   const greetingTemplates: Record<'technical' | 'aptitude' | 'group-discussion', string[]> = {
     technical: [
-      `Welcome to your ${company} technical mock. I will ask implementation and reasoning questions. Start with a brief intro and your strongest technical project.`,
-      `Great to meet you. In this ${company} session, we will focus on technical depth and problem solving. Please introduce yourself to begin.`,
-      `Let us begin your ${company} technical interview. I will test clarity, trade-offs, and coding logic. Share a quick background first.`,
+      `🎯 TECHNICAL INTERVIEW MODE\nHi! Great to meet you. I see you're interviewing for ${role}. Before we dive into technical questions, tell me about yourself - your background, experience, current projects you've worked on?`
     ],
     aptitude: [
-      `Welcome to your aptitude round for ${company}. Expect quant and logical reasoning style prompts. Start with a short introduction.`,
-      `Good to have you here. This ${company} aptitude session focuses on analytical thinking and speed. Please introduce yourself first.`,
-      `Starting aptitude practice now for ${company}. I will ask reasoning and problem-solving questions. Begin with your intro.`,
+      `📊 APTITUDE TEST MODE\nWelcome to the Aptitude Test! This tests your math, logic, and reasoning skills. You'll get 10 questions at varying difficulty levels. Each question is timed. Ready?`
     ],
     'group-discussion': [
-      `Welcome to the group discussion simulation for ${company}. I will evaluate communication, structure, and collaboration language. Start with a concise self-introduction.`,
-      `Hello, this is your ${company} group discussion practice. Focus on clarity, listening cues, and persuasive communication. Please introduce yourself.`,
-      `We are beginning the ${company} group discussion round. I will assess communication quality and argument structure. Share your introduction first.`,
+      `🎤 GROUP DISCUSSION MODE\nWelcome to Group Discussion Practice! I'll give you a random topic. You need to speak for AT LEAST 4-5 minutes continuously. Think before you speak, organize your thoughts, and try to cover different angles of the topic.\n\nHere's your topic:\nArtificial Intelligence: Boon or Bane?\n\nYou have 30 seconds to organize your thoughts. Then speak!`
     ],
   };
   const greetingList = greetingTemplates[selectedTrack] || greetingTemplates.technical;
-  const greeting = greetingList[Math.floor(Math.random() * greetingList.length)];
+  const greeting = greetingList[0];
 
   const [isVideoEnabled, setIsVideoEnabled] = useState(true);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
@@ -233,34 +231,74 @@ export default function LiveInterviewRoom() {
     setTranscript('');
     setIsProcessing(true);
 
-    const trackInstruction =
-      selectedTrack === 'aptitude'
-        ? 'Focus on quantitative reasoning, logical puzzles, analytical thinking, and problem-solving speed.'
-        : selectedTrack === 'group-discussion'
-          ? 'Focus on communication quality, argument structure, collaboration language, and persuasive clarity.'
-          : 'Focus on technical depth: implementation details, trade-offs, debugging, and system design thinking.';
+    // const trackInstruction =
+    //   selectedTrack === 'aptitude'
+    //     ? 'Focus on quantitative reasoning, logical puzzles, analytical thinking, and problem-solving speed.'
+    //     : selectedTrack === 'group-discussion'
+    //       ? 'Focus on communication quality, argument structure, collaboration language, and persuasive clarity.'
+    //       : 'Focus on technical depth: implementation details, trade-offs, debugging, and system design thinking.';
 
-    const systemPrompt = `You are the Antigravity AI Technical Interviewer for ${company}. Conduct a REAL, conversational technical interview.
-    
-TRACK: ${selectedTrack.toUpperCase()} | Company: ${company}
-INSTRUCTION: ${trackInstruction}
-Resume context: ${resumeContext || 'none provided'}.
+    const systemPrompt = `You are the Antigravity AI Interviewer - a multi-mode interview platform.
 
-TARGET ROLES: Software Engineer, Frontend, Backend, Full Stack, DevOps, Data Engineer, Security, QA, Database Admin.
+=== ACTIVE MODE ===
+${selectedTrack === 'technical' ? 'MODE 1: TECHNICAL INTERVIEW' : selectedTrack === 'aptitude' ? 'MODE 2: APTITUDE TEST (Math & Logic)' : 'MODE 3: GROUP DISCUSSION (GD - Speaking Skills)'}
 
-CORE BEHAVIOR — FOLLOW EXACTLY:
-- Act like a real human interviewer.
-- Ask ONE question at a time. Wait for the answer.
-- DO NOT give a score, and DO NOT say "Correct/Incorrect" in a robotic way.
-- Instead, acknowledge their answer naturally (e.g. "That makes sense", "Interesting point, though I'd also consider...", "Got it.").
-- If they miss something big, gently prompt them: "What about [concept]?", or just move on to the next question.
-- Gradually increase the difficulty of your questions as the interview progresses (Basic -> Intermediate -> Advanced).
+Target Role: ${role}
+Seniority: ${seniority}
+Target Company: ${company}
+Resume context: ${resumeContext || 'none provided'}
 
-RULES:
-- Be CONCISE — max 100 words total per response.
-- Sound like a REAL interviewer, not a chatbot.
-- NEVER output "[Score: X/10]" or "✅ / ❌".
-- Keep the conversation flowing smoothly.`;
+=== UNIFIED CONVERSATION RULES ===
+✅ ALWAYS:
+- Acknowledge user's choice
+- Give clear instructions
+- Evaluate honestly
+- Provide constructive feedback
+- Encourage practice
+
+❌ NEVER:
+- Mix modes (if doing aptitude, don't ask technical)
+- Skip instructions
+- Be vague about scoring
+- Rush evaluations
+- Ignore user preferences
+- Show timers, countdowns, or "time remaining" messages
+
+=== RESPONSE FORMAT ===
+Keep responses clean, natural, and simple. Do NOT print the MODE INDICATOR in your messages.
+Do NOT include any timer, countdown, or "time remaining" in your responses.
+
+=== IF MODE 1: TECHNICAL INTERVIEW ===
+- Start by asking them to introduce themselves (if first message).
+- Ask ${qCount} questions total.
+- YOU MUST follow a STRICT progressive difficulty order from BASIC to ADVANCED:
+  • Questions 1-${Math.ceil(qCount * 0.3)}: BASIC / WARM-UP level (fundamental concepts, definitions, simple examples)
+  • Questions ${Math.ceil(qCount * 0.3) + 1}-${Math.ceil(qCount * 0.65)}: INTERMEDIATE / FOUNDATION level (applied knowledge, trade-offs, implementation details)
+  • Questions ${Math.ceil(qCount * 0.65) + 1}-${qCount}: ADVANCED / CHALLENGE level (system design, edge cases, deep architecture, debugging complex issues)
+- NEVER skip levels or ask an advanced question before finishing basic questions.
+- AFTER the user answers a question, YOU MUST FIRST evaluate if the answer is right or wrong AND THEN ask the next question.
+- Use this EXACT format when responding to an answer:
+  ✅ CORRECT PARTS: [What they got right]
+  ❌ MISSING / WRONG PARTS: [What they missed or got wrong]
+  📚 COMPLETE ANSWER: [Briefly explain the best answer]
+  ➡️ NEXT: [Ask your next question]
+
+=== IF MODE 2: APTITUDE TEST ===
+- Ask Math, Logic, and Reasoning problems. NOT in sentence format. Pure MATH/LOGIC format.
+- Follow STRICT progressive difficulty: start with easy arithmetic/logic, then medium, then hard problems.
+- Example: "Find: 15% of 320" or "If x+5=12, what is x?"
+- Do NOT use sentences or fluff.
+- Track speed and give Quick Feedback: "✅ CORRECT!..." or "❌ INCORRECT. Correct answer: X."
+- Do NOT show any timer or time remaining.
+
+=== IF MODE 3: GROUP DISCUSSION ===
+- Provide a RANDOM topic (e.g. Artificial Intelligence, Crypto, Remote Work, etc.).
+- Tell the user to speak for 4-5 minutes continuously. 
+- Wait for the user to submit their long response.
+- Provide a GD SCORING CRITERIA Breakdown: Communication (/25), Content (/25), Logical Thinking (/20), Confidence (/15), Time Management (/15).
+- Give overall score out of 10, Strengths, and Improvements.
+
+Follow the active mode exactly. Be concise where necessary.`;
     
     const allMessages = [...messages, newUserMessage];
     const aiResponseText = await generateResponse(allMessages, systemPrompt);
@@ -317,7 +355,7 @@ RULES:
           <span className="text-xl md:text-2xl font-extrabold tracking-tighter text-blue-400">AI Interviewer</span>
           <div className="hidden md:block h-6 w-px bg-[#424754]"></div>
           <div className="flex flex-col">
-            <span className="font-sans text-xs md:text-sm font-bold text-onSurface line-clamp-1">Senior Product Designer Mock Interview</span>
+            <span className="font-sans text-xs md:text-sm font-bold text-onSurface line-clamp-1">{role} — {selectedTrack === 'technical' ? 'Technical' : selectedTrack === 'aptitude' ? 'Aptitude' : 'Group Discussion'} Interview</span>
             <div className="flex items-center gap-2 mt-0.5">
               <span className="w-2 h-2 rounded-full bg-error animate-pulse"></span>
               <span className="text-[10px] md:text-xs font-mono text-[#c2c6d6] tracking-wider uppercase">Active</span>
