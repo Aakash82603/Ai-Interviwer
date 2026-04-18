@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
-  base: '/Ai-Interviwer/',  // ← ADD THIS LINE
+  // Remove or change base to '/' for Vercel
+  base: '/',
   plugins: [react()],
   define: {
     'process.env': process.env,
