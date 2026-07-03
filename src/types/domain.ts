@@ -1,6 +1,13 @@
 export type SessionMode = 'live' | 'practice'
 export type PracticeTrack = 'technical' | 'aptitude' | 'group-discussion'
 
+export interface SessionDimensions {
+  communication: number
+  technicalDepth: number
+  confidence: number
+  structure: number
+}
+
 export interface SessionRecord {
   id: string
   user_id: string
@@ -13,6 +20,8 @@ export interface SessionRecord {
   transcript: { role: 'user' | 'assistant'; content: string; feedback?: string }[]
   strengths: string[]
   improvements: string[]
+  dimensions?: SessionDimensions
+  recommendation?: string
   created_at: string
 }
 

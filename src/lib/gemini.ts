@@ -97,8 +97,21 @@ export async function generateQuestions(context: string): Promise<string> {
 }
 
 export async function evaluateAnswer(question: string, answer: string): Promise<string> {
+  if (!answer.trim()) {
+    return 'No answer provided. Please write or speak your response before requesting feedback.';
+  }
   return generateFromPrompt(
-    `Evaluate this interview answer.\nQuestion: ${question}\nAnswer: ${answer}\n\nProvide concise feedback and a score out of 10.`,
+    `Evaluate this interview answer based ONLY on what the candidate wrote. Do not assume unstated knowledge.
+
+Question: ${question}
+Answer: ${answer}
+
+Provide:
+1. Score: X/10
+2. What was correct (quote their answer)
+3. What was missing or wrong
+4. A model answer summary
+5. One specific improvement tip`,
   )
 }
 
@@ -156,45 +169,108 @@ export interface InterviewEvaluation {
   strengths: string[];
   improvements: string[];
   userFeedback: string[];
+  dimensions: {
+    communication: number;
+    technicalDepth: number;
+    confidence: number;
+    structure: number;
+  };
+  recommendation: string;
+}
+
+function parseEvaluationJson(raw: string): InterviewEvaluation | null {
+  const clean = raw.replace(/```json|```/g, '').trim();
+  const start = clean.indexOf('{');
+  const end = clean.lastIndexOf('}');
+  if (start === -1 || end === -1) return null;
+  try {
+    return JSON.parse(clean.slice(start, end + 1)) as InterviewEvaluation;
+  } catch {
+    return null;
+  }
 }
 
 export async function evaluateInterview(transcript: Message[]): Promise<InterviewEvaluation> {
+  const userAnswers = transcript.filter((m) => m.role === 'user');
   const formattedTranscript = transcript
     .map((m) => `${m.role.toUpperCase()}: ${m.content}`)
     .join('\n\n');
 
-  const raw = await generateFromPrompt(
-    `You are an expert technical interviewer evaluating an interview transcript.
-Analyze the transcript and provide a final evaluation.
+  if (userAnswers.length === 0) {
+    return {
+      score: 0,
+      verdict: 'Incomplete',
+      strengths: [],
+      improvements: ['No answers were recorded. Speak clearly into the microphone or type your responses.'],
+      userFeedback: [],
+      dimensions: { communication: 0, technicalDepth: 0, confidence: 0, structure: 0 },
+      recommendation: 'Complete at least one interview question before ending the session.',
+    };
+  }
+
+  const raw = await groqChat(
+    [
+      {
+        role: 'system',
+        content: `You are an expert interviewer. Score ONLY based on what the candidate actually said in the transcript.
+Do NOT invent answers or assume knowledge the candidate did not demonstrate.
+If an answer is empty, off-topic, or "I don't know", score it low and say so explicitly.
+Each userFeedback item must quote or reference the candidate's actual words.`,
+      },
+      {
+        role: 'user',
+        content: `Evaluate this interview transcript. The candidate gave exactly ${userAnswers.length} answer(s).
+
 Transcript:
 ${formattedTranscript}
 
-Return STRICT JSON only with this shape (no markdown around it):
+Return STRICT JSON only (no markdown):
 {
-  "score": <number 0-100>,
-  "verdict": "<Hire | Strong Hire | Needs Improvement>",
-  "strengths": ["<point 1>", "<point 2>"],
-  "improvements": ["<point 1>", "<point 2>"],
+  "score": <number 0-100 based on actual performance>,
+  "verdict": "<Strong Hire | Hire | Needs Improvement | Incomplete>",
+  "strengths": ["<specific strength from transcript>", "<another if applicable>"],
+  "improvements": ["<specific gap from transcript>", "<another if applicable>"],
+  "dimensions": {
+    "communication": <0-100>,
+    "technicalDepth": <0-100>,
+    "confidence": <0-100>,
+    "structure": <0-100>
+  },
+  "recommendation": "<1-2 sentences of actionable advice based on this specific interview>",
   "userFeedback": [
-    "<specific feedback and score (e.g. ❌ 3/10 You missed...) for the USER's 1st answer>",
-    "<specific feedback for USER's 2nd answer>",
-    ...must have EXACTLY the same number of items as the USER spoke in the transcript!
+    "<for answer 1: score X/10 + what was correct/wrong referencing their actual answer>",
+    ...exactly ${userAnswers.length} items, one per candidate answer in order
   ]
-}
-No markdown, no extra text.`,
-    1500
+}`,
+      },
+    ],
+    1800,
   );
 
-  try {
-    const clean = raw.replace(/```json|```/g, '').trim();
-    return JSON.parse(clean) as InterviewEvaluation;
-  } catch (err) {
+  const parsed = parseEvaluationJson(raw);
+  if (parsed) {
     return {
-      score: 65,
-      verdict: "Needs Improvement",
-      strengths: ["Completed the interview"],
-      improvements: ["Could not completely parse final AI evaluation"],
-      userFeedback: transcript.filter(m => m.role === 'user').map(() => "Feedback unavailable for this response.")
+      ...parsed,
+      userFeedback: parsed.userFeedback?.slice(0, userAnswers.length) ?? [],
+      dimensions: parsed.dimensions ?? {
+        communication: parsed.score,
+        technicalDepth: parsed.score,
+        confidence: parsed.score,
+        structure: parsed.score,
+      },
+      recommendation: parsed.recommendation || 'Review your transcript and practice weak areas.',
     };
   }
+
+  return {
+    score: 50,
+    verdict: 'Needs Improvement',
+    strengths: ['Participated in the interview'],
+    improvements: ['Provide more detailed, structured answers with concrete examples'],
+    userFeedback: userAnswers.map(
+      (a, i) => `Answer ${i + 1}: Review your response "${a.content.slice(0, 80)}..." and add more depth.`,
+    ),
+    dimensions: { communication: 50, technicalDepth: 50, confidence: 50, structure: 50 },
+    recommendation: 'Practice answering with the STAR method and include specific technical details.',
+  };
 }

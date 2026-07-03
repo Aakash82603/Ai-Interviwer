@@ -19,6 +19,27 @@ export default function ResultsPage() {
 
   const score = session?.score ?? 0;
   const dash = 552.92 - (552.92 * Math.min(score, 100)) / 100;
+  const dimensions = session?.dimensions ?? {
+    communication: Math.min(100, score + 5),
+    technicalDepth: score,
+    confidence: Math.max(0, score - 4),
+    structure: Math.max(0, score - 8),
+  };
+  const dimensionList = [
+    { label: 'Communication', score: dimensions.communication, key: 'comm' },
+    { label: 'Technical Depth', score: dimensions.technicalDepth, key: 'tech' },
+    { label: 'Confidence', score: dimensions.confidence, key: 'conf' },
+    { label: 'Structure', score: dimensions.structure, key: 'struct' },
+  ];
+  const radarPoints = (() => {
+    const cx = 100, cy = 100, r = 70;
+    const angles = [-90, 0, 90, 180];
+    return dimensionList.map((d, i) => {
+      const rad = (angles[i] * Math.PI) / 180;
+      const dist = (d.score / 100) * r;
+      return `${cx + dist * Math.cos(rad)},${cy + dist * Math.sin(rad)}`;
+    }).join(' ');
+  })();
 
   return (
     <div className="bg-background text-onSurface min-h-screen">
@@ -65,7 +86,9 @@ export default function ResultsPage() {
               <div className="inline-block px-6 py-2 bg-primary/20 text-primary rounded-full text-lg font-extrabold tracking-tight mb-2 border border-primary/20">
                 {session?.verdict || 'Pending'}
               </div>
-              <p className="text-sm text-[#8c909f] max-w-[200px] mx-auto">Top 5% of candidates for this specific role profile.</p>
+              <p className="text-sm text-[#8c909f] max-w-[240px] mx-auto">
+                {score >= 80 ? 'Strong performance — keep refining your edge cases and system design answers.' : score >= 60 ? 'Solid foundation — focus on depth and structured responses.' : 'Keep practicing — review your transcript feedback below.'}
+              </p>
             </div>
           </div>
 
@@ -75,14 +98,14 @@ export default function ResultsPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight mb-6 text-onSurface">Dimension Analysis</h2>
                 <div className="space-y-6">
-                  {[{ label: 'Communication', score: Math.min(100, score + 5) }, { label: 'Technical Depth', score: score }, { label: 'Confidence', score: Math.max(0, score - 4) }, { label: 'Structure', score: Math.max(0, score - 8) }].map(dim => (
+                  {dimensionList.map(dim => (
                     <div key={dim.label}>
                       <div className="flex justify-between mb-2">
                         <span className="text-sm font-medium text-[#c2c6d6]">{dim.label}</span>
                         <span className="text-sm font-bold text-primary">{dim.score}%</span>
                       </div>
                       <div className="h-1.5 w-full bg-surface-3 rounded-full overflow-hidden">
-                        <div className="h-full bg-primary rounded-full" style={{ width: `${dim.score}%` }}></div>
+                        <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${dim.score}%` }}></div>
                       </div>
                     </div>
                   ))}
@@ -99,7 +122,7 @@ export default function ResultsPage() {
                 <line stroke="#2d3449" strokeWidth="1" x1="100" x2="100" y1="20" y2="180"></line>
                 <line stroke="#2d3449" strokeWidth="1" x1="20" x2="180" y1="100" y2="100"></line>
                 
-                <polygon fill="rgba(77, 142, 255, 0.2)" points="100,28 174,100 100,166 36,100" stroke="#4d8eff" strokeWidth="2"></polygon>
+                <polygon fill="rgba(77, 142, 255, 0.2)" points={radarPoints} stroke="#4d8eff" strokeWidth="2"></polygon>
                 
                 <text fill="#8c909f" fontSize="8" fontWeight="700" textAnchor="middle" x="100" y="15">COMM</text>
                 <text fill="#8c909f" fontSize="8" fontWeight="700" textAnchor="middle" x="190" y="103">TECH</text>
@@ -164,7 +187,7 @@ export default function ResultsPage() {
                     {msg.role === 'user' && msg.feedback && msg.feedback !== "No specific feedback generated." && (
                       <div className="mt-4 pt-4 border-t border-white/5">
                         <p className="text-sm font-medium text-warning space-y-1">
-                          {msg.feedback.split('\\n').map((line, i) => (
+                          {msg.feedback.split('\n').map((line, i) => (
                             <span key={i} className="block">{line}</span>
                           ))}
                         </p>
@@ -191,7 +214,11 @@ export default function ResultsPage() {
             </div>
             <div className="flex-1">
               <h3 className="text-2xl font-bold mb-2 text-onSurface">Final Verdict: {session?.verdict || 'Pending'}</h3>
-              <p className="text-[#c2c6d6] leading-relaxed">Your combination of technical mastery and communication skills makes you a standout candidate. We recommend focusing on "Storytelling with Data" for your next executive-level interview round.</p>
+              <p className="text-[#c2c6d6] leading-relaxed">
+                {session?.recommendation || (session?.improvements?.[0]
+                  ? `Focus on: ${session.improvements.join('. ')}`
+                  : 'Review your transcript and practice areas where you scored lowest.')}
+              </p>
             </div>
             <div className="flex-shrink-0 w-full sm:w-auto mt-4 md:mt-0">
               <button className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-xl font-extrabold hover:bg-blue-600 transition-all shadow-lg shadow-primary/20">
