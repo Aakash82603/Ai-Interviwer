@@ -4,7 +4,7 @@
 
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY as string | undefined
 const GROQ_BASE_URL = 'https://api.groq.com/openai/v1'
-const GROQ_MODEL = 'llama-3.3-70b-versatile' // Fast and highly capable
+const GROQ_MODEL = 'openai/gpt-oss-120b' // Fast and highly capable
 
 export interface Message {
   role: 'user' | 'assistant' | 'system'
